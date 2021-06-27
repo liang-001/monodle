@@ -8,6 +8,8 @@ sys.path.append(ROOT_DIR)
 import yaml
 import argparse
 import datetime
+import warnings
+warnings.filterwarnings("ignore")
 
 from lib.helpers.model_helper import build_model
 from lib.helpers.dataloader_helper import build_dataloader
