@@ -40,7 +40,7 @@ pip install -r requirements.txt
 Please download [KITTI dataset](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d) and organize the data as follows:
 
 ```
-#ROOT
+monodle/
   |data/
     |KITTI/
       |ImageSets/ [already provided in this repo]
@@ -54,7 +54,7 @@ Please download [KITTI dataset](http://www.cvlibs.net/datasets/kitti/eval_object
           |image_2/
 ```
 ```
-# data/KITTI/
+# monodle/data/KITTI/
 mkdir object
 ln -s path/to/kitti/training/ object/
 ln -s path/to/kitti/testing/ object/
@@ -64,7 +64,7 @@ ln -s path/to/kitti/testing/ object/
 Move to the workplace and train the network:
 
 ```sh
- cd path/to/monodle
+ # monodle/
  cd experiments/example
  python ../../tools/train_val.py --config kitti_example.yaml
 ```
