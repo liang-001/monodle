@@ -136,11 +136,13 @@ def _topk(heatmap, K=50):
 
     topk_inds = topk_inds % (height * width)
     topk_ys = (topk_inds / width).int().float()
+    # topk_ys = torch.true_divide(topk_inds, width) # torch1.6.0
     topk_xs = (topk_inds % width).int().float()
 
     # batch * cls_ids * 50
     topk_score, topk_ind = torch.topk(topk_scores.view(batch, -1), K)
     topk_cls_ids = (topk_ind / K).int()
+    # topk_cls_ids = torch.true_divide(topk_ind, K).int() # torch1.6.0
     topk_inds = _gather_feat(topk_inds.view(batch, -1, 1), topk_ind).view(batch, K)
     topk_ys = _gather_feat(topk_ys.view(batch, -1, 1), topk_ind).view(batch, K)
     topk_xs = _gather_feat(topk_xs.view(batch, -1, 1), topk_ind).view(batch, K)
