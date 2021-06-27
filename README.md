@@ -53,20 +53,25 @@ Please download [KITTI dataset](http://www.cvlibs.net/datasets/kitti/eval_object
           |calib/
           |image_2/
 ```
-
+```
+# data/KITTI/
+mkdir object
+ln -s path/to/kitti/training/ object/
+ln -s path/to/kitti/testing/ object/
+```
 ### Training & Evaluation
 
 Move to the workplace and train the network:
 
 ```sh
- cd #ROOT
+ cd path/to/monodle
  cd experiments/example
- python ../../tools/train_val.py --config config_patchnet.yaml
+ python ../../tools/train_val.py --config kitti_example.yaml
 ```
 The model will be evaluated automatically if the training completed. If you only want evaluate your trained model (or the provided [pretrained model](https://drive.google.com/file/d/1jaGdvu_XFn5woX0eJ5I2R6wIcBLVMJV6/view?usp=sharing)) , you can modify the test part configuration in the .yaml file and use the following command:
 
 ```sh
-python ../../tools/train_val.py --config config_patchnet.yaml --e
+python ../../tools/train_val.py --config kitti_example.yaml --e
 ```
 
 For ease of use, we also provide a pre-trained checkpoint, which can be used for evaluation directly. See the below table to check the performance.
